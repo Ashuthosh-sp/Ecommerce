@@ -26,13 +26,13 @@ const Products = () => {
   return (
     <Layout title={"DashBoard- Product Page"}>
       <div className="container-fluid m-3 p-3">
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-md-3">
           <AdminMenu />
         </div>
         <div className="col-md-9">
           <h1 className="text-center"> All Products List</h1>
-          <div className="d-flex">
+          <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <Link
                 key={p._id}
