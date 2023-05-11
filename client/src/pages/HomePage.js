@@ -4,8 +4,11 @@ import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
+import { useCart } from "../context/cart";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 const HomePage = () => {
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -139,7 +142,7 @@ const HomePage = () => {
               </button>
             </div>
           </div>
-          <div className="col-md-9 offset-1">
+          <div className="col-md-9 ">
             <h1 className="text-center">All Products</h1>
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
@@ -161,7 +164,14 @@ const HomePage = () => {
                     >
                       See Details
                     </button>
-                    <button className="btn btn-secondary ms-1">
+                    <button
+                      className="btn btn-secondary ms-1"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem('cart',JSON.stringify([...cart,p]))
+                        toast.success("Item added to cart");
+                      }}
+                    >
                       Add to Cart
                     </button>
                   </div>
