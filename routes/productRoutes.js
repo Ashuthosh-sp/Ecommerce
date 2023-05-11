@@ -5,6 +5,7 @@ import {
   deleteProductController,
   getProductController,
   getsingleProductController,
+  productCategoryController,
   productCountController,
   productFilterController,
   productListController,
@@ -49,20 +50,21 @@ router.put(
 );
 
 //filter product
-router.post('/product-filters',productFilterController )
+router.post("/product-filters", productFilterController);
 
 //pagination(product count)
-router.get('/product-count',productCountController);
+router.get("/product-count", productCountController);
 
 //product per page
-router.get('/product-list/:page',productListController);
+router.get("/product-list/:page", productListController);
 
 //search product
-router.get('/search/:keyword', searchProductController)
+router.get("/search/:keyword", searchProductController);
 
 //similar product
-router.get('/related-product/:pid/:cid', relatedProductController)
+router.get("/related-product/:pid/:cid", relatedProductController);
+
+//category wise product
+router.get("/product-category/:slug", productCategoryController);
 
 export default router;
-
-
